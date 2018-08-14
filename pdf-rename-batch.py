@@ -72,7 +72,7 @@ def pdf_text(filename):
         process_pdf(rsrc, device, fp, None, maxpages=1, password='') # open(filename, 'rb') need to close or use: 'with open(filename, 'rb') as fp'
         #fp.close()
         device.close()
-        #print('===text.getvalue===',text.getvalue())
+        print('===text.getvalue===',text.getvalue())
         return text.getvalue()
     except (PDFSyntaxError, PDFTextExtractionNotAllowed, UnicodeEncodeError):
         print(">>>>>Can't read doc's text info")
@@ -102,7 +102,7 @@ def title_start_end(lines, max_lines=100,line_range=4):
                 continue
             start = i; end = i + line_range - 1; break
             continue # Other language
-    #print('=start=%s==end=%s'%(start,end))
+    print('=start=%s==end=%s'%(start,end))
     return start,end
 
 def text_title(filename):
@@ -112,7 +112,7 @@ def text_title(filename):
     #i = title_start(lines)
     #j = title_end(lines, i,max_lines=5)
     i,j = title_start_end(lines,max_lines=20,line_range=5)
-    print('===title=return===',' '.join(line.strip() for line in lines[i:j]))
+    print('====return===',' '.join(line.strip() for line in lines[i:j]))
     return ' '.join(line.strip() for line in lines[i:j])
 
 def valid_title(title):
